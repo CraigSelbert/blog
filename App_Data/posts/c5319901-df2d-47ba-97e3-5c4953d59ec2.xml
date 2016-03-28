@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<post>
+  <author>Admin</author>
+  <title>Enums and conditional logic</title>
+  <description>I have learned many a way to perform conditional logic using enums and well when I was asked by one </description>
+  <content>&lt;p&gt;I have learned many a way to perform conditional logic using enums and well when I was asked by one of my junior developers this past week on &amp;ldquo;why where you doing this?&amp;rdquo; I decided to go ahead and document what I was going to help better explain myself.&lt;/p&gt;
+&lt;p&gt;The first thing is the setup of the enum. Take the following simple&amp;nbsp;setup&lt;/p&gt;
+&lt;pre class="brush:csharp;auto-links:false;toolbar:false" contenteditable="false"&gt;// Eenum with Flags attribute
+[Flags]
+public enum SimpleExample
+{
+    None = 0,
+    One = 1,
+    Two = 1 &amp;lt;&amp;lt; 1,
+    Three = 1 &amp;lt;&amp;lt; 2,
+    Four = 1 &amp;lt;&amp;lt; 3,
+    All = One | Two | Three | Four
+}&lt;/pre&gt;
+&lt;pre class="brush:csharp;auto-links:false;toolbar:false" contenteditable="false"&gt;// Logic statement 
+var flag = SimpleExample.One; 
+if ((flag&amp;nbsp;&amp;amp; SimpleExample.One) != 0)
+{
+&amp;nbsp; &amp;nbsp; Console.WriteLine("Hit");
+}&lt;/pre&gt;
+&lt;pre class="brush:csharp;auto-links:false;toolbar:false" contenteditable="false"&gt;// Command line passing the enum
+/ST:01101&lt;/pre&gt;
+&lt;p&gt;Nothing to outlandish here but the developer asked the following questions.&lt;br /&gt;What is the &amp;ldquo;Fag&amp;rdquo; attribute?&lt;br /&gt;What is with the &amp;lt;&amp;lt; (Bit Shifting)&amp;nbsp;behind Two, Three and Four?&lt;br /&gt;What is with All = One | Two | Three | Four?&lt;br /&gt;What what with the if statement?&lt;br /&gt;What is with the 1&amp;rsquo;s and 0&amp;rsquo;s we are passing into the command line?&lt;br /&gt;He did google these on Bing before coming to me but most of the answers only contained part of the question and I wanted to help him out and put all the answers to his questions in one spot. So below are the answers to those questions.&lt;/p&gt;
+&lt;h3&gt;Flags Attribute&lt;/h3&gt;
+&lt;p&gt;Simply put it marks the enumeration as a bit field, this in turns allows us to combine the values of the enum giving us more flexibility for the underlying value of the enum instance. Read what Microsoft has to say about this here.&lt;/p&gt;
+&lt;h3&gt;Bit Shifting&lt;/h3&gt;
+&lt;p&gt;We then need to set the value of each enum, we could do this many ways. We could just assign a integer value to each enum. We do this for &amp;ldquo;None&amp;rdquo; and &amp;ldquo;One&amp;rdquo; and we could continue doing this picking 2, 4, 8, 16, 32, 64, 128, etc.. for each enum, but we could also use some bit shifting to get us to those numbers i.e. 1 &amp;lt;&amp;lt;1. What?!? What is that notation? This is really simple once you get your head around it. What we want to do is create a binary representation of the value 2. This is easy, it is &amp;ldquo;10&amp;rdquo; not ten but one zero. We attain that by moving the value one over one space to the left using a bit shift left operator &amp;lt;&amp;lt; giving us a integer value in memory of two. We then can do the same thing again performing 1 &amp;lt;&amp;lt; 2 giving us &amp;ldquo;100&amp;rdquo; not 100 but one, zero, zero which is the binary representation of the integer value of 4 and so on. Just a simple trick to get your results.&lt;/p&gt;
+&lt;h3&gt;Bit | (or) and &amp;amp; (and) Operation&lt;/h3&gt;
+&lt;p&gt;Again we are just using what is available to us in the framework. Like most languages you have the bitwise operators like |(OR) or &amp;amp;(AND) which allow us to easily combine and check values using simple binary operations. So if you took the binary value for one &amp;ldquo;1&amp;rdquo; and performed the OR operator on it with the binary value of two &amp;ldquo;10&amp;rdquo; you would get the binary value of &amp;ldquo;11&amp;rdquo; which is three. Then you can check to see if that value exists using the &amp;amp; operation. Here is a simple example&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false"&gt;// A flag has both the One and Two Flag set to it
+var flag = SimpleExample.One | SimpleExample.Two;
+
+// We would see here that the integer value of our flag is 3
+Console.WriteLine((int)flag);&lt;/pre&gt;
+&lt;p&gt;&lt;br /&gt;Now if you wanted to see if the flag value contains the Two flag we use the &amp;amp;amp; operator, &lt;br /&gt;by combining it with the Two enum if the resulting value would not be 0, meaning the flag and the Two enum has the Two bit location set resulting in a value that is not binary zero. I know you could also use the &amp;ldquo;HasFlag&amp;rdquo; Method but if you do a simple performance check you will see that it takes about 10 times longer evaluating using &amp;ldquo;HasFlag&amp;rdquo; vs simple binary &amp;amp;amp; operation.&lt;/p&gt;
+&lt;pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false"&gt;if ((flag &amp;amp; SimpleExample.Two) != 0)
+{
+    Console.WriteLine("Hit");
+}&lt;/pre&gt;
+&lt;h3&gt;Ones and Zeros&lt;/h3&gt;
+&lt;p&gt;The last question had to do with sending into a console application a parameter of ones and zeros. Simply put this was just the binary representation of the |(or) values of the enum that we would use on startup.&lt;/p&gt;
+&lt;p&gt;// Again a flag has both the One and Two Flag set to it&lt;br /&gt;var flag = SimpleExample.One | SimpleExample.Two;&lt;/p&gt;
+&lt;p&gt;// The string value of those ones and zeros&lt;br /&gt;var binaryFlagString = (Convert.ToString((int)flag, 2));&lt;/p&gt;
+&lt;p&gt;// Would give you &amp;ldquo;11&amp;rdquo;, again not eleven but one - one which is really 3.&lt;/p&gt;
+&lt;p&gt;Of course I could have just passed in a int value but it was easier for me to cross reference a list on enums running the range of 24 to their location in the representation of &amp;ldquo;0110110000111&amp;rdquo;&amp;hellip;.. I hope you get my point. I would know that in the 4th location from the right meant that the application had Four selected. It was easier for me to read that value than some integer value.&lt;/p&gt;
+&lt;p&gt;At the end of the day we all have our tips and tricks and I hope this helps someone out there in the ethose of the internet.&lt;/p&gt;</content>
+  <ispublished>True</ispublished>
+  <isdeleted>False</isdeleted>
+  <iscommentsenabled>True</iscommentsenabled>
+  <pubDate>2016-02-22 18:19:00</pubDate>
+  <lastModified>2016-03-28 17:30:48</lastModified>
+  <raters>0</raters>
+  <rating>0</rating>
+  <slug>enums-and-conditional-logic</slug>
+  <tags />
+  <comments />
+  <categories />
+  <notifications />
+</post>

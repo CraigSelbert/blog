@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<InstalledPackageFiles>
+    <item id="MetroLight" fileorder="1" filepath="Custom\Themes\MetroLight" isdirectory="True" />
+    <item id="MetroLight" fileorder="2" filepath="Custom\Themes\MetroLight\images" isdirectory="True" />
+    <item id="MetroLight" fileorder="3" filepath="Custom\Themes\MetroLight\images\archive.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="4" filepath="Custom\Themes\MetroLight\images\bk_blockquote.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="5" filepath="Custom\Themes\MetroLight\images\bk_vertline.jpg" isdirectory="False" />
+    <item id="MetroLight" fileorder="6" filepath="Custom\Themes\MetroLight\images\bullet-blue-lt.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="7" filepath="Custom\Themes\MetroLight\images\bullet-blue.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="8" filepath="Custom\Themes\MetroLight\images\bullet-lt.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="9" filepath="Custom\Themes\MetroLight\images\bullet.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="10" filepath="Custom\Themes\MetroLight\images\bullet_list.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="11" filepath="Custom\Themes\MetroLight\images\circle.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="12" filepath="Custom\Themes\MetroLight\images\contact.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="13" filepath="Custom\Themes\MetroLight\images\dld.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="14" filepath="Custom\Themes\MetroLight\images\f.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="15" filepath="Custom\Themes\MetroLight\images\feed.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="16" filepath="Custom\Themes\MetroLight\images\ico_archive.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="17" filepath="Custom\Themes\MetroLight\images\ico_rss.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="18" filepath="Custom\Themes\MetroLight\images\ico_tag.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="19" filepath="Custom\Themes\MetroLight\images\loading.gif" isdirectory="False" />
+    <item id="MetroLight" fileorder="20" filepath="Custom\Themes\MetroLight\images\sample.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="21" filepath="Custom\Themes\MetroLight\images\search-btn.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="22" filepath="Custom\Themes\MetroLight\images\spacer.gif" isdirectory="False" />
+    <item id="MetroLight" fileorder="23" filepath="Custom\Themes\MetroLight\images\t.png" isdirectory="False" />
+    <item id="MetroLight" fileorder="24" filepath="Custom\Themes\MetroLight\CommentView.ascx" isdirectory="False" />
+    <item id="MetroLight" fileorder="25" filepath="Custom\Themes\MetroLight\metro.ico" isdirectory="False" />
+    <item id="MetroLight" fileorder="26" filepath="Custom\Themes\MetroLight\noavatar.jpg" isdirectory="False" />
+    <item id="MetroLight" fileorder="27" filepath="Custom\Themes\MetroLight\PostView.ascx" isdirectory="False" />
+    <item id="MetroLight" fileorder="28" filepath="Custom\Themes\MetroLight\site.master" isdirectory="False" />
+    <item id="MetroLight" fileorder="29" filepath="Custom\Themes\MetroLight\site.master.cs" isdirectory="False" />
+    <item id="MetroLight" fileorder="30" filepath="Custom\Themes\MetroLight\style.css" isdirectory="False" />
+    <item id="MetroLight" fileorder="31" filepath="Custom\Themes\MetroLight\theme.xml" isdirectory="False" />
+</InstalledPackageFiles>

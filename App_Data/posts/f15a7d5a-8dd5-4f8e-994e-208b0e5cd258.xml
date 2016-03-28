@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<post>
+  <author>Admin</author>
+  <title>Performance Issues, Documentation and solutions</title>
+  <description>I have been using Fluent Validation&amp;nbsp;(FV)&amp;nbsp;for one of my websites since 2010. It allowed me </description>
+  <content>&lt;div dir="ltr" style="text-align: left;"&gt;I have been using &lt;a href="https://github.com/JeremySkinner/FluentValidation" target="_blank"&gt;Fluent Validation&lt;/a&gt;&amp;nbsp;(FV)&amp;nbsp;for one of my websites since 2010. It allowed me to encapsulate all my validation logic into a simple and concise class for all my business and data rules. I started to experience weird performance issues on my production website that is using FV and I was not sure what the culprit was, so I installed &lt;a href="https://www.jetbrains.com/profiler/" target="_blank"&gt;Jet Brains dotTrace&lt;/a&gt;&amp;nbsp;and much to my surprise there were a huge number of calls to "RuleFor", which is the method you call to create the rules inside your derived class of the AbstractValidator. &amp;nbsp;Since my application is a web application leveraging &lt;a href="http://www.ninject.org/" target="_blank"&gt;Ninject IoC&lt;/a&gt;&amp;nbsp;I was creating new instances of the&amp;nbsp;validators for every request. &amp;nbsp;Some of the&amp;nbsp;calls would save multiple object graphs, in turn creating multiple validators for that request. It wasn't until I doubled my number of clients that I noticed this performance issue. In just thinking about it logically I knew that I had to implement some kind of singleton pattern but there was no really clear documentation for this solution. It was only after googling around I found an old IoC example posted back in 2010 that was using &lt;a href="http://structuremap.github.io/" target="_blank"&gt;StructureMap&lt;/a&gt;&amp;nbsp;for Fluent Validation and&amp;nbsp;I&amp;nbsp;noticed those examples where all leveraging the &lt;a href="https://msdn.microsoft.com/en-us/library/ff650316.aspx?f=255&amp;amp;MSPPError=-2147217396" target="_blank"&gt;s&lt;/a&gt;ingleton&amp;nbsp;pattern. It took me some digging around but I found what I needed. I have since &lt;a href="https://github.com/JeremySkinner/FluentValidation/issues/205" target="_blank"&gt;filed a &lt;/a&gt;issue with the owner of Fluent Validation for some better documentation and we will see where that goes but the moral to this story is.....&lt;br /&gt; &lt;br /&gt; Proactively load test your application. I have load tested many an application over my career for scalability, and much to my surprise it was not until I had issues in my own application that I started to load test the application. &amp;nbsp;Just running unit tests is not enough. This goes for all applications you develop not just the ones you get paid to develop.&lt;br /&gt;
+&lt;div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  <ispublished>True</ispublished>
+  <isdeleted>False</isdeleted>
+  <iscommentsenabled>True</iscommentsenabled>
+  <pubDate>2016-02-15 18:21:00</pubDate>
+  <lastModified>2016-03-28 17:25:29</lastModified>
+  <raters>0</raters>
+  <rating>0</rating>
+  <slug>fsddf</slug>
+  <tags />
+  <comments />
+  <categories />
+  <notifications />
+</post>
